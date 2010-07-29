@@ -41,13 +41,14 @@
  * Versatile PB has four UARTs.
  */
 #define CONSOLE_PORT CONFIG_CONS_INDEX
-#define baudRate CONFIG_BAUDRATE
 static volatile unsigned char *const port[] = CONFIG_PL01x_PORTS;
 #define NUM_PORTS (sizeof(port)/sizeof(port[0]))
 
 static void pl01x_putc (int portnum, char c);
 static int pl01x_getc (int portnum);
 static int pl01x_tstc (int portnum);
+unsigned int baudRate = CONFIG_BAUDRATE;
+DECLARE_GLOBAL_DATA_PTR;
 
 #ifdef CONFIG_PL010_SERIAL
 
@@ -183,6 +184,8 @@ int serial_tstc (void)
 
 void serial_setbrg (void)
 {
+	baudRate = gd->baudrate;
+	serial_init();
 }
 
 static void pl01x_putc (int portnum, char c)

@@ -1,0 +1,15 @@
+Source: u-boot-linaro
+Section: misc
+Priority: extra
+Maintainer: John Rigby <john.rigby@linaro.org>
+Build-Depends: quilt (>= 0.46-7~), debhelper (>= 7.0.50~)
+Standards-Version: 3.8.4
+
+Package: u-boot-linaro
+Architecture: armel
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: U-Boot bootloader configured for various ARM SOCs
+ This package contains the U-Boot bootloader for various ARM SOCs,
+ which is responsible for loading and executing the Linux kernel on those
+ boards. This package contains the u-boot binary blob, and is not usually
+ needed on a normal system

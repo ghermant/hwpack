@@ -1,0 +1,24 @@
+u-boot-linaro (v2010.06-265-gcdb7497-linaro-1) maverick; urgency=low
+
+  * Initial Linaro u-boot tree based on
+
+  * Upstream v2010.06-265-gcdb7497
+
+  * A series of patches from ssakomans exp branch that add
+    support for beagle C4 and xM.  These have been rebased
+    onto current upstream.  The gitorious beagle trees are
+    still based on v2010.03.  These patches will be replaced
+    with patches from ssakoman.
+
+  * Versatile express patches from Matt Waddel.
+
+  * Debian packaging by John Rigby based on the lucid
+    u-boot-omap3 package.
+
+  * Currently builds u-boot binaries for these platforms
+    ca9x4_ct_vxp        aka Versatile Express
+    mx51evk             aka Babbage
+    omap4_panda
+    omap3_beagle
+
+ -- John Rigby <john.rigby@linaro.org>  Fri, 06 Aug 2010 16:20:43 -0600

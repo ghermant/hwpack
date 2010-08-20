@@ -2653,9 +2653,11 @@ static struct nand_flash_dev *nand_get_flash_type(struct mtd_info *mtd,
 	}
 
 	if (!type) {
+#ifndef CONFIG_SYS_NAND_QUIET_TEST
 		printk(KERN_INFO "%s: unknown NAND device: Manufacturer ID:"
 		       " 0x%02x, Chip ID: 0x%02x\n", __func__,
 		       *maf_id, dev_id);
+#endif
 		return ERR_PTR(-ENODEV);
 	}
 

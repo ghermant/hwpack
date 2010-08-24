@@ -1,3 +1,33 @@
+u-boot-linaro (v2010.06-695-gbd23130-linaro-2) lucid; urgency=low
+
+  * New upstream v2010.06-695-gbd23130
+  * Updated ssakoman patches v2010.06-714-g33b8b43
+        Mans Rullgard (3):
+            ARMV7: OMAP3: Fix and clean up L2 cache enable/disable functions
+            ARMV7: OMAP3: Convert setup_auxcr() to pure asm
+            ARMV7: OMAP3: Apply Cortex-A8 errata workarounds only on affected revisions
+
+        Steve Sakoman (16):
+            ARMV7: OMAP: Move syslib.c to omap-common since it can be shared by OMAP3 and OMAP4
+            ARMV7: OMAP: add convenience function to set TWL4030 regulator voltages
+            ARMV7: OMAP: Enable input driver on Overo's MMC1_CLK and MMC3_CLK pinmux setup
+            ARMV7: OMAP: Add mpurate boot arg for Overo and Beagle
+            ARMV7: OMAP: Add board revision detection for Overo
+            ARMV7: OMAP: Add detection and support for Beagle C4 revision
+            ARMV7: OMAP: Configure Overo's second network chip
+            ARMV7: OMAP3: Update CPU type detection for AM35XX/OMAP36XX/37XX
+            ARMV7: OMAP3: Add clock setup for OMAP36XX/37XX
+            ARMV7: OMAP3: sdrc: remove hard coding sdram setup for 128MB/bank
+            mtd: nand: honor CONFIG_SYS_NAND_QUIET_TEST with unknown NAND printk
+            ARMV7: OMAP3: Add CONFIG_SYS_NAND_QUIET_TEST to Beagle and Overo configs
+            ARMV7: OMAP3: Add support for Beagle xM
+            ARMV7: OMAP: Add spi driver for OMAP3/OMAP4
+            NET: Add driver for Micrel KS8851
+            ARMV7: Add Micrel KS8851 net chip support to OMAP4430 SDP
+  * Same versatile express patches from Matt Waddel as before.
+
+ -- John Rigby <john.rigby@linaro.org>  Mon, 23 Aug 2010 22:54:44 -0600
+
 u-boot-linaro (v2010.06-265-gcdb7497-linaro-1) maverick; urgency=low
 
   * Initial Linaro u-boot tree based on

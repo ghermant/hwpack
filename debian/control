@@ -4,7 +4,7 @@ Priority: extra
 Maintainer: John Rigby <john.rigby@linaro.org>
 Build-Depends: quilt (>= 0.46-7~), debhelper (>= 7.0.50~), rsync
 Standards-Version: 3.8.4
-Vcs-Git: git://git.linaro.org/boot/u-boot-linaro-next.git
+Vcs-Git: git://git.linaro.org/ubuntu/u-boot-linaro-stable.git
 
 Package: u-boot-linaro-omap3-beagle
 Architecture: armel

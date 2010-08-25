@@ -27,7 +27,7 @@
 reset_cpu:
 	ldr	r1, rstctl			@ get addr for global reset
 						@ reg
-	mov	r3, #0x2			@ full reset pll + mpu
+	mov	r3, #0x4			@ full cool reset pll + mpu
 	str	r3, [r1]			@ force reset
 	mov	r0, r0
 _loop_forever:

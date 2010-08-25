@@ -1,4 +1,4 @@
-u-boot-linaro (v2010.06-695-gbd23130-linaro-0ubuntu1) UNRELEASED; urgency=low
+u-boot-linaro (2010.06-695-gbd23130-linaro-0ubuntu1) UNRELEASED; urgency=low
 
   [ John Rigby ]
   * Build one deb per target 

@@ -1,4 +1,10 @@
-u-boot-linaro (v2010.06-695-gbd23130-linaro-2) lucid; urgency=low
+u-boot-linaro (v2010.06-695-gbd23130-linaro-3) maverick; urgency=low
+
+  * Add rsync as a build dependency
+
+ -- John Rigby <john.rigby@linaro.org>  Wed, 25 Aug 2010 09:09:49 -0600
+
+u-boot-linaro (v2010.06-695-gbd23130-linaro-2) maverick; urgency=low
 
   * New upstream v2010.06-695-gbd23130
   * Updated ssakoman patches v2010.06-714-g33b8b43

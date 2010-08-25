@@ -5,6 +5,7 @@ u-boot-linaro (v2010.06-695-gbd23130-linaro-0ubuntu1) UNRELEASED; urgency=low
 
   [ Steve Langasek ]
   * Use Ubuntu-appropriate version numbering
+  * Add a Vcs-Git field to document the link back to the source repository
 
  -- John Rigby <john.rigby@linaro.org>  Wed, 25 Aug 2010 14:13:45 -0600
 

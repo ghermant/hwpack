@@ -1,3 +1,9 @@
+u-boot-linaro (v2010.06-695-gbd23130-linaro-4) maverick; urgency=low
+
+  * Build one deb per target 
+
+ -- John Rigby <john.rigby@linaro.org>  Wed, 25 Aug 2010 14:13:45 -0600
+
 u-boot-linaro (v2010.06-695-gbd23130-linaro-3) maverick; urgency=low
 
   * Add rsync as a build dependency

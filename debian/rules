@@ -16,10 +16,10 @@ endif
 #export DH_OPTIONS=-v
 
 PLATFORMS_AND_TARGETS= \
-	  ca9x4_ct_vxp	u-boot.bin\
-	  mx51evk 	u-boot.imx\
-	  omap3_beagle 	u-boot.bin\
-	  omap4_panda	u-boot.bin
+	  ca9x4_ct_vxp	u-boot.bin	ca9x4-ct-vxp\
+	  mx51evk 	u-boot.imx	mx51evk\
+	  omap3_beagle 	u-boot.bin	omap3-beagle\
+	  omap4_panda	u-boot.bin	omap4-panda
 
 %:
 	dh --with quilt $@
@@ -35,8 +35,8 @@ override_dh_auto_clean:
 # removes all *.bin files in the tree so we use rsync to make
 # a copy of the tree for each platform
 override_dh_auto_build:
-	echo $(PLATFORMS_AND_TARGETS)| xargs -n 2 | \
-	while read plat target; do \
+	echo $(PLATFORMS_AND_TARGETS)| xargs -n 3 | \
+	while read plat target deb; do \
 		mkdir -p debian/build/$$plat; \
 		rsync -a --exclude=debian * debian/build/$$plat; \
 		$(MAKE) -C debian/build/$$plat $${plat}_config; \
@@ -44,7 +44,7 @@ override_dh_auto_build:
 	done
 
 override_dh_auto_install:
-	echo $(PLATFORMS_AND_TARGETS) | xargs -n 2 | \
-	while read plat target; do \
-	    install -D -m644 debian/build/$$plat/$$target debian/tmp/usr/lib/u-boot/$$plat/$$target; \
+	echo $(PLATFORMS_AND_TARGETS) | xargs -n 3 | \
+	while read plat target deb; do \
+	    install -D -m644 debian/build/$$plat/$$target debian/u-boot-linaro-$$deb/usr/lib/u-boot/$$plat/$$target; \
 	done

@@ -5,11 +5,38 @@ Maintainer: John Rigby <john.rigby@linaro.org>
 Build-Depends: quilt (>= 0.46-7~), debhelper (>= 7.0.50~), rsync
 Standards-Version: 3.8.4
 
-Package: u-boot-linaro
+Package: u-boot-linaro-omap3-beagle
 Architecture: armel
 Depends: ${shlibs:Depends}, ${misc:Depends}
-Description: U-Boot bootloader configured for various ARM SOCs
- This package contains the U-Boot bootloader for various ARM SOCs,
- which is responsible for loading and executing the Linux kernel on those
- boards. This package contains the u-boot binary blob, and is not usually
- needed on a normal system
+Description: U-Boot bootloader binary for various TI OMAP3 Beagle boards
+ This package contains the U-Boot bootloader which is responsible for
+ loading and executing the Linux kernel on those boards. This package
+ contains the u-boot binary blob, and is not usually needed on a normal
+ system
+
+Package: u-boot-linaro-omap4-panda
+Architecture: armel
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: U-Boot bootloader binary for the TI OMAP4 Panda board
+ This package contains the U-Boot bootloader which is responsible for
+ loading and executing the Linux kernel on this board. This package
+ contains the u-boot binary blob, and is not usually needed on a normal
+ system
+
+Package: u-boot-linaro-mx51evk
+Architecture: armel
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: U-Boot bootloader binary for the Freescale i.MX51 mx51evk (Babbage) board
+ This package contains the U-Boot bootloader which is responsible for
+ loading and executing the Linux kernel on this board. This package
+ contains the u-boot binary blob, and is not usually needed on a normal
+ system
+
+Package: u-boot-linaro-ca9x4-ct-vxp
+Architecture: armel
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: U-Boot bootloader binary for the ARM ca9x4_ct_vxp (Versatile Express) board
+ This package contains the U-Boot bootloader which is responsible for
+ loading and executing the Linux kernel on this board. This package
+ contains the u-boot binary blob, and is not usually needed on a normal
+ system

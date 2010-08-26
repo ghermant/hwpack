@@ -1,5 +1,7 @@
 u-boot-linaro (2010.06-695-gbd23130-linaro-0ubuntu1) UNRELEASED; urgency=low
 
+  Feature freeze exception for new package (LP: #624330)
+
   [ John Rigby ]
   * Build one deb per target 
 

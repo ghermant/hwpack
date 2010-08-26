@@ -1,4 +1,4 @@
-u-boot-linaro (2010.06-695-gbd23130-linaro-0ubuntu1) UNRELEASED; urgency=low
+u-boot-linaro (2010.06-695-gbd23130-linaro-0ubuntu1) maverick; urgency=low
 
   Feature freeze exception for new package (LP: #624330)
 
@@ -9,7 +9,7 @@ u-boot-linaro (2010.06-695-gbd23130-linaro-0ubuntu1) UNRELEASED; urgency=low
   * Use Ubuntu-appropriate version numbering
   * Add a Vcs-Git field to document the link back to the source repository
 
- -- John Rigby <john.rigby@linaro.org>  Wed, 25 Aug 2010 14:13:45 -0600
+ -- Steve Langasek <steve.langasek@ubuntu.com>  Thu, 26 Aug 2010 00:35:29 +0000
 
 u-boot-linaro (v2010.06-695-gbd23130-linaro-3) maverick; urgency=low
 

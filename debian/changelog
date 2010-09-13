@@ -5,8 +5,34 @@ u-boot-linaro (2010.09-rc1-0ubuntu2) maverick; urgency=low
   * Update Vcs-Git: git://git.linaro.org/boot/u-boot-linaro-stable.git
   * Eliminate quilt and rsync build dependencies
   * Remove linaro from package version string
+  * There were 90 commits between previous upstream and this.
+    Of these:
+        24 armv7/omap patches 
+            Signed-off-by: Steve Sakoman <steve@sakoman.com>
+                These replace Linaro local versions of these patches
+        1 touches common I2C code
+            CMD_I2C: make alen=0 work
+            Signed-off-by: Reinhard Meyer <u-boot@emk-elektronik.de>
+                bug fix for i2c command
+        1 touches device tree code which is not yet supported on arm
+            fdt: call fdt_parent_offset fewer times while translating addresses
+            Signed-off-by: Scott Wood <scottwood@freescale.com>
+            Signed-off-by: Kumar Gala <galak@kernel.crashing.org>
+        1 touches Maintainers file
+            MX51: Update responsible for mx51evk
+            Signed-off-by: Stefano Babic <sbabic@denx.de>
+        1 does fixes coding style and whitespace issues
+            Prepare v2010.09-rc1
+            Signed-off-by: Wolfgang Denk <wd@denx.de>
 
- -- John Rigby <john.rigby@linaro.org>  Mon, 13 Sep 2010 12:42:08 -0600
+        9 armv7 patches that do not touch common code
+            Samsung
+        24 arm but not armv7
+            Atmel, Fujitsu and Marvell
+        29 other arches
+            powerpc, nios, sh, avr32, mips
+
+ -- John Rigby <john.rigby@linaro.org>  Mon, 13 Sep 2010 17:51:23 -0600
 
 u-boot-linaro (2010.06-695-gbd23130-linaro-0ubuntu1) maverick; urgency=low
 

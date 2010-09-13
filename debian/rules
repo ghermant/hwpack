@@ -22,7 +22,7 @@ PLATFORMS_AND_TARGETS= \
 	  omap4_panda	u-boot.bin	omap4-panda
 
 %:
-	dh --with quilt $@
+	dh $@
 
 override_dh_auto_configure:
 	@
@@ -38,9 +38,9 @@ override_dh_auto_build:
 	echo $(PLATFORMS_AND_TARGETS)| xargs -n 3 | \
 	while read plat target deb; do \
 		mkdir -p debian/build/$$plat; \
-		rsync -a --exclude=debian * debian/build/$$plat; \
-		$(MAKE) -C debian/build/$$plat $${plat}_config; \
-		$(MAKE) -C debian/build/$$plat $$target; \
+		$(MAKE) O=$$PWD/debian/build/$$plat $${plat}_config; \
+		find debian/build; \
+		$(MAKE) O=$$PWD/debian/build/$$plat; \
 	done
 
 override_dh_auto_install:

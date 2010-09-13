@@ -1,9 +1,12 @@
-u-boot-linaro (2010.09-rc1-linaro-0ubuntu2) UNRELEASED; urgency=low
+u-boot-linaro (2010.09-rc1-0ubuntu2) maverick; urgency=low
 
   [ John Rigby ]
   * Update upstream base to v2010.09-rc1 
+  * Update Vcs-Git: git://git.linaro.org/boot/u-boot-linaro-stable.git
+  * Eliminate quilt and rsync build dependencies
+  * Remove linaro from package version string
 
- -- John Rigby <john.rigby@linaro.org>  Mon, 13 Sep 2010 10:53:27 -0600
+ -- John Rigby <john.rigby@linaro.org>  Mon, 13 Sep 2010 12:42:08 -0600
 
 u-boot-linaro (2010.06-695-gbd23130-linaro-0ubuntu1) maverick; urgency=low
 

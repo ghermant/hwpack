@@ -1,3 +1,10 @@
+u-boot-linaro (2010.09-rc1-linaro-0ubuntu2) UNRELEASED; urgency=low
+
+  [ John Rigby ]
+  * Update upstream base to v2010.09-rc1 
+
+ -- John Rigby <john.rigby@linaro.org>  Mon, 13 Sep 2010 10:53:27 -0600
+
 u-boot-linaro (2010.06-695-gbd23130-linaro-0ubuntu1) maverick; urgency=low
 
   Feature freeze exception for new package (LP: #624330)

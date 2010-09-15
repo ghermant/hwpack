@@ -1,4 +1,4 @@
-u-boot-linaro (2010.09-rc1-0ubuntu2) UNRELEASED; urgency=low
+u-boot-linaro (2010.09~rc1.1-0ubuntu2) UNRELEASED; urgency=low
 
   [ John Rigby ]
   * Update upstream base to v2010.09-rc1 
@@ -33,6 +33,7 @@ u-boot-linaro (2010.09-rc1-0ubuntu2) UNRELEASED; urgency=low
             powerpc, nios, sh, avr32, mips
   * Change license in debian/copyright to GPL V2 only
     - LP: #624499
+  * Add debian/source/format to quiet lintian
 
   [ Matt Waddel ]
   * Support second bank of flash on vexpress

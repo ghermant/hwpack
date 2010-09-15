@@ -125,6 +125,9 @@
 #define CONFIG_SYS_FLASH_SIZE		0x04000000
 #define CONFIG_SYS_MAX_FLASH_BANKS	2
 #define CONFIG_SYS_FLASH_BASE		0x40000000
+#define CONFIG_SYS_FLASH_BASE0		0x40000000
+#define CONFIG_SYS_FLASH_BASE1		0x44000000
+#define CONFIG_SYS_MONITOR_BASE		CONFIG_SYS_FLASH_BASE0
 
 /* Timeout values in ticks */
 #define CONFIG_SYS_FLASH_ERASE_TOUT	(2 * CONFIG_SYS_HZ) /* Erase Timeout */
@@ -136,7 +139,7 @@
 #define FLASH_MIN_SECTOR_SIZE		0x00010000	/*  64 KB sectors */
 
 /* Room required on the stack for the environment data */
-#define CONFIG_ENV_SIZE			8192
+#define CONFIG_ENV_SIZE			FLASH_MAX_SECTOR_SIZE
 
 /*
  * Amount of flash used for environment:
@@ -152,11 +155,12 @@
 #define CONFIG_ENV_IS_IN_FLASH		1
 #define CONFIG_ENV_OFFSET		(PHYS_FLASH_SIZE - \
 					(2 * CONFIG_ENV_SECT_SIZE))
-#define CONFIG_ENV_ADDR			(CONFIG_SYS_FLASH_BASE + \
+#define CONFIG_ENV_ADDR			(CONFIG_SYS_FLASH_BASE1 + \
 					 CONFIG_ENV_OFFSET)
 #define CONFIG_SYS_FLASH_PROTECTION	/* The devices have real protection */
 #define CONFIG_SYS_FLASH_EMPTY_INFO	/* flinfo indicates empty blocks */
-#define CONFIG_SYS_FLASH_BANKS_LIST	{ CONFIG_SYS_FLASH_BASE }
+#define CONFIG_SYS_FLASH_BANKS_LIST	{ CONFIG_SYS_FLASH_BASE0, \
+					  CONFIG_SYS_FLASH_BASE1 }
 
 /* Monitor Command Prompt */
 #define CONFIG_SYS_CBSIZE		512	/* Console I/O Buffer Size */

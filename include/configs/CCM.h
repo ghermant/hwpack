@@ -199,7 +199,6 @@
 #else
 #define	CONFIG_SYS_MONITOR_LEN		(192 << 10)	/* Reserve 192 kB for Monitor	*/
 #endif
-#define CONFIG_SYS_MONITOR_BASE	CONFIG_SYS_FLASH_BASE
 #define	CONFIG_SYS_MALLOC_LEN		(128 << 10)	/* Reserve 128 kB for malloc()	*/
 
 /*

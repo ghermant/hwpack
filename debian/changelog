@@ -1,4 +1,4 @@
-u-boot-linaro (2010.09-rc1-0ubuntu2) maverick; urgency=low
+u-boot-linaro (2010.09-rc1-0ubuntu2) UNRELEASED; urgency=low
 
   [ John Rigby ]
   * Update upstream base to v2010.09-rc1 
@@ -31,6 +31,12 @@ u-boot-linaro (2010.09-rc1-0ubuntu2) maverick; urgency=low
             Atmel, Fujitsu and Marvell
         29 other arches
             powerpc, nios, sh, avr32, mips
+
+  [ Matt Waddel ]
+  * Support second back of flash on vexpress
+    - LP: #637780
+
+
 
  -- John Rigby <john.rigby@linaro.org>  Mon, 13 Sep 2010 17:51:23 -0600
 

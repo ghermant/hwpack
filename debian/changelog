@@ -1,4 +1,4 @@
-u-boot-linaro (2010.09~rc1.1-0ubuntu2) UNRELEASED; urgency=low
+u-boot-linaro (2010.09~rc1.1-0ubuntu2) maverick; urgency=low
 
   [ John Rigby ]
   * Update upstream base to v2010.09-rc1 

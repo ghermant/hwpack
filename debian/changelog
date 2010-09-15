@@ -31,14 +31,14 @@ u-boot-linaro (2010.09-rc1-0ubuntu2) UNRELEASED; urgency=low
             Atmel, Fujitsu and Marvell
         29 other arches
             powerpc, nios, sh, avr32, mips
+  * Change license in debian/copyright to GPL V2 only
+    - LP: #624499
 
   [ Matt Waddel ]
-  * Support second back of flash on vexpress
+  * Support second bank of flash on vexpress
     - LP: #637780
 
-
-
- -- John Rigby <john.rigby@linaro.org>  Mon, 13 Sep 2010 17:51:23 -0600
+ -- John Rigby <john.rigby@linaro.org>  Wed, 15 Sep 2010 10:51:58 -0600
 
 u-boot-linaro (2010.06-695-gbd23130-linaro-0ubuntu1) maverick; urgency=low
 

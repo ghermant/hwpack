@@ -1,3 +1,11 @@
+u-boot-linaro (2010.09~rc1.1-0ubuntu3) maverick; urgency=low
+
+  [ Steve Sakoman ]
+  * ARMV7: OMAP4: Fix Panda pinmux setting to enable Wifi/BT Module
+    - LP: #645167
+
+ -- John Rigby <john.rigby@linaro.org>  Wed, 22 Sep 2010 12:42:39 -0600
+
 u-boot-linaro (2010.09~rc1.1-0ubuntu2) maverick; urgency=low
 
   [ John Rigby ]

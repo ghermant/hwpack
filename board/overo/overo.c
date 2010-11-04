@@ -281,6 +281,22 @@ int misc_init_r(void)
 
 	dieid_num_r();
 
+	if (strcmp(getenv("mpurate"), "auto") == 0)
+		switch (get_cpu_family()) {
+		case CPU_OMAP34XX:
+			if ((get_cpu_rev() >= CPU_3XX_ES31) &&
+			    (get_sku_id() == SKUID_CLK_720MHZ))
+				setenv("mpurate", "720");
+			else
+				setenv("mpurate", "600");
+			break;
+		case CPU_OMAP36XX:
+			setenv("mpurate", "720");
+			break;
+		default:
+			setenv("mpurate", "500");
+		}
+
 	return 0;
 }
 

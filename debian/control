@@ -3,7 +3,7 @@ Section: misc
 Priority: extra
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 XSBC-Original-Maintainer: John Rigby <john.rigby@linaro.org>
-Build-Depends: debhelper (>= 7.0.50~)
+Build-Depends: debhelper (>= 7.0.50~), gcc-4.4
 Standards-Version: 3.8.4
 Vcs-Git: git://git.linaro.org/boot/u-boot-linaro-stable.git
 

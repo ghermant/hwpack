@@ -1,3 +1,9 @@
+u-boot-linaro (2010.09~rc1.1-0ubuntu5) natty; urgency=low
+
+  * Build with gcc-4.4 for now as 4.5 breaks u-boot for some reason.
+
+ -- Loïc Minier <loic.minier@linaro.org>  Wed, 15 Dec 2010 22:54:03 +0100
+
 u-boot-linaro (2010.09~rc1.1-0ubuntu4) natty; urgency=low
 
   * Add Gumstix Overo, omap3_overo.

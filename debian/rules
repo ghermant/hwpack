@@ -13,6 +13,9 @@ ifneq ($(DEB_BUILD_GNU_TYPE),$(DEB_HOST_GNU_TYPE))
 export CROSS_COMPILE=$(DEB_HOST_GNU_TYPE)-
 endif
 
+# u-boot breaks with gcc-4.5
+export CC=$(CROSS_COMPILE)gcc-4.4
+
 %:
 	dh $@
 

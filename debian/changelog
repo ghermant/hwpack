@@ -1,3 +1,12 @@
+u-boot-linaro (2010.09~rc1.1-0ubuntu4) natty; urgency=low
+
+  * Add Gumstix Overo, omap3_overo.
+  * Cleanup rules.
+  * Fix clean to remove some files which upstream creates in the source tree.
+  * List platform and targets in debian/platform-and-targets.
+
+ -- Loïc Minier <loic.minier@linaro.org>  Fri, 03 Dec 2010 15:44:02 +0100
+
 u-boot-linaro (2010.09~rc1.1-0ubuntu3) maverick; urgency=low
 
   [ Steve Sakoman ]

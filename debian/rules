@@ -12,39 +12,27 @@ DEB_BUILD_GNU_TYPE ?= $(shell dpkg-architecture -qDEB_BUILD_GNU_TYPE)
 ifneq ($(DEB_BUILD_GNU_TYPE),$(DEB_HOST_GNU_TYPE))
 export CROSS_COMPILE=$(DEB_HOST_GNU_TYPE)-
 endif
-#export DH_VERBOSE=1
-#export DH_OPTIONS=-v
-
-PLATFORMS_AND_TARGETS= \
-	  ca9x4_ct_vxp	u-boot.bin	ca9x4-ct-vxp\
-	  mx51evk 	u-boot.imx	mx51evk\
-	  omap3_beagle 	u-boot.bin	omap3-beagle\
-	  omap4_panda	u-boot.bin	omap4-panda
 
 %:
 	dh $@
 
-override_dh_auto_configure:
-	@
-
 override_dh_auto_clean:
-	$(MAKE) distclean
+	# upstream only cleans these files if passing the right O=, but it
+	# shouldn't create these the source tree in the first place
+	# XXX this hardcodes "arm"
+	rm -f arch/arm/include/asm/arch arch/arm/include/asm/proc
 	rm -rf debian/build
 
-# the u-boot.imx target does not work with O= and make mrproper
-# removes all *.bin files in the tree so we use rsync to make
-# a copy of the tree for each platform
 override_dh_auto_build:
-	echo $(PLATFORMS_AND_TARGETS)| xargs -n 3 | \
 	while read plat target deb; do \
 		mkdir -p debian/build/$$plat; \
 		$(MAKE) O=$$PWD/debian/build/$$plat $${plat}_config; \
 		find debian/build; \
 		$(MAKE) O=$$PWD/debian/build/$$plat; \
-	done
+	done <debian/platform-and-targets
 
 override_dh_auto_install:
-	echo $(PLATFORMS_AND_TARGETS) | xargs -n 3 | \
 	while read plat target deb; do \
 	    install -D -m644 debian/build/$$plat/$$target debian/u-boot-linaro-$$deb/usr/lib/u-boot/$$plat/$$target; \
-	done
+	done <debian/platform-and-targets
+

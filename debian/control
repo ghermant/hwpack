@@ -16,6 +16,15 @@ Description: U-Boot bootloader binary for various TI OMAP3 Beagle boards
  contains the u-boot binary blob, and is not usually needed on a normal
  system
 
+Package: u-boot-linaro-omap3-overo
+Architecture: armel
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: U-Boot bootloader binary for Gumstix Overo boards
+ This package contains the U-Boot bootloader which is responsible for
+ loading and executing the Linux kernel on those boards. This package
+ contains the u-boot binary blob, and is not usually needed on a normal
+ system
+
 Package: u-boot-linaro-omap4-panda
 Architecture: armel
 Depends: ${shlibs:Depends}, ${misc:Depends}

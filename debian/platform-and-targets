@@ -1,0 +1,5 @@
+ca9x4_ct_vxp	u-boot.bin	ca9x4-ct-vxp
+mx51evk		u-boot.imx	mx51evk
+omap3_beagle	u-boot.bin	omap3-beagle
+omap3_overo	u-boot.bin	omap3-overo
+omap4_panda	u-boot.bin	omap4-panda

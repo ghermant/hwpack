@@ -154,13 +154,31 @@ int do_mmcops(cmd_tbl_t *cmdtp, int flag, int argc, char * const argv[])
 			mmc_init(mmc);
 
 			return 0;
+		} else if (strncmp(argv[1], "part", 4) == 0) {
+			int dev = simple_strtoul(argv[2], NULL, 10);
+			block_dev_desc_t *mmc_dev;
+			struct mmc *mmc = find_mmc_device(dev);
+
+			if (!mmc) {
+				puts("no mmc devices available\n");
+				return 1;
+			}
+			mmc_init(mmc);
+			mmc_dev = mmc_get_dev(dev);
+			if (mmc_dev != NULL &&
+			    mmc_dev->type != DEV_TYPE_UNKNOWN) {
+				print_part(mmc_dev);
+				return 0;
+			}
+
+			puts("get mmc type error!\n");
+			return 1;
 		}
 
 	case 0:
 	case 1:
 	case 4:
-		printf("Usage:\n%s\n", cmdtp->usage);
-		return 1;
+		return cmd_usage(cmdtp);
 
 	case 2:
 		if (!strcmp(argv[1], "list")) {
@@ -215,10 +233,8 @@ int do_mmcops(cmd_tbl_t *cmdtp, int flag, int argc, char * const argv[])
 			printf("%d blocks written: %s\n",
 				n, (n == cnt) ? "OK" : "ERROR");
 			return (n == cnt) ? 0 : 1;
-		} else {
-			printf("Usage:\n%s\n", cmdtp->usage);
-			rc = 1;
-		}
+		} else
+			rc = cmd_usage(cmdtp);
 
 		return rc;
 	}
@@ -230,5 +246,6 @@ U_BOOT_CMD(
 	"read <device num> addr blk# cnt\n"
 	"mmc write <device num> addr blk# cnt\n"
 	"mmc rescan <device num>\n"
+	"mmc part <device num> - lists available partition on mmc\n"
 	"mmc list - lists available devices");
 #endif

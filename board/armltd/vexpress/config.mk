@@ -17,8 +17,6 @@
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston,
 # MA 02111-1307 USA
 #
-# image loaded at 0x06000000
 # Linux-Kernel is expected to be at 0x60008000
 #
-TEXT_BASE = 0x06000000
-LDSCRIPT := $(SRCTREE)/board/armltd/vexpress/u-boot.lds
+CONFIG_SYS_TEXT_BASE = 0x60800000

@@ -45,7 +45,6 @@
 
 /* Size of malloc() pool */
 #define CONFIG_SYS_MALLOC_LEN		(CONFIG_ENV_SIZE + 128 * 1024)
-#define CONFIG_SYS_GBL_DATA_SIZE	128
 
 #define SCTL_BASE			0x10001000
 #define VEXPRESS_FLASHPROG_FLVPPEN	(1 << 0)
@@ -80,6 +79,7 @@
 #define CONFIG_CMD_PING
 #define CONFIG_CMD_SAVEENV
 #define CONFIG_NET_MULTI
+#define CONFIG_CMD_RUN
 
 #define CONFIG_CMD_FAT
 #define CONFIG_DOS_PARTITION		1
@@ -113,10 +113,33 @@
 #define PHYS_SDRAM_1_SIZE		0x20000000	/* 512 MB */
 #define PHYS_SDRAM_2_SIZE		0x20000000	/* 512 MB */
 
+/* additions for new relocation code */
+#define CONFIG_SYS_SDRAM_BASE		PHYS_SDRAM_1
+#define CONFIG_SYS_INIT_RAM_SIZE		0x1000
+#define CONFIG_SYS_GBL_DATA_OFFSET	(CONFIG_SYS_SDRAM_BASE + \
+					 CONFIG_SYS_INIT_RAM_SIZE - \
+					 GENERATED_GBL_DATA_SIZE)
+#define CONFIG_SYS_INIT_SP_ADDR		CONFIG_SYS_GBL_DATA_OFFSET
+
 /* Basic environment settings */
-#define CONFIG_BOOTCOMMAND		"bootm 0x44100000"
-#define CONFIG_BOOTARGS			"root=/dev/sda1 ro mem=1024M\0" \
-					"console=ttyAMA0,38400"
+#define CONFIG_BOOTCOMMAND		"run bootflash;"
+#define CONFIG_EXTRA_ENV_SETTINGS \
+		"loadaddr=0x80008000\0" \
+		"initrd=0x61000000\0" \
+		"kerneladdr=0x44100000\0" \
+		"initrdaddr=0x44800000\0" \
+		"maxinitrd=0x1800000\0" \
+		"console=ttyAMA0,38400n8\0" \
+		"dram=1024M\0" \
+		"root=/dev/sda1 rw\0" \
+		"mtd=armflash:1M@0x800000(uboot),7M@0x1000000(kernel)," \
+			"24M@0x2000000(initrd)\0" \
+		"flashargs=setenv bootargs root=${root} console=${console} " \
+			"mem=${dram} mtdparts=${mtd} mmci.fmax=190000 " \
+			"devtmpfs.mount=0  vmalloc=256M\0" \
+		"bootflash=run flashargs; " \
+			"cp ${initrdaddr} ${initrd} ${maxinitrd}; " \
+			"bootm ${kerneladdr} ${initrd}\0"
 
 /* FLASH and environment organization */
 #define PHYS_FLASH_SIZE			0x04000000	/* 64MB */
@@ -124,7 +147,6 @@
 #define CONFIG_FLASH_CFI_DRIVER		1
 #define CONFIG_SYS_FLASH_SIZE		0x04000000
 #define CONFIG_SYS_MAX_FLASH_BANKS	2
-#define CONFIG_SYS_FLASH_BASE		0x40000000
 #define CONFIG_SYS_FLASH_BASE0		0x40000000
 #define CONFIG_SYS_FLASH_BASE1		0x44000000
 #define CONFIG_SYS_MONITOR_BASE		CONFIG_SYS_FLASH_BASE0
@@ -136,17 +158,14 @@
 /* 255 0x40000 sectors + first or last sector may have 4 erase regions = 259 */
 #define CONFIG_SYS_MAX_FLASH_SECT	259		/* Max sectors */
 #define FLASH_MAX_SECTOR_SIZE		0x00040000	/* 256 KB sectors */
-#define FLASH_MIN_SECTOR_SIZE		0x00010000	/*  64 KB sectors */
 
 /* Room required on the stack for the environment data */
 #define CONFIG_ENV_SIZE			FLASH_MAX_SECTOR_SIZE
 
 /*
  * Amount of flash used for environment:
- * Since we don't know which end has the small erase blocks
- * use the penultimate full sector location
- * for the environment - save a full sector even though
- * the real environment size CONFIG_ENV_SIZE is probably less
+ * We don't know which end has the small erase blocks so we use the penultimate
+ * sector location for the environment
  */
 #define CONFIG_ENV_SECT_SIZE		FLASH_MAX_SECTOR_SIZE
 #define CONFIG_ENV_OVERWRITE		1

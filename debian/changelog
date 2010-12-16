@@ -1,3 +1,9 @@
+u-boot-linaro (2010.12-0ubuntu1) UNRELEASED; urgency=low
+
+  * Merge current upstream into packaged branch 
+
+ -- John Rigby <john.rigby@linaro.org>  Wed, 15 Dec 2010 16:02:27 -0700
+
 u-boot-linaro (2010.09~rc1.1-0ubuntu6) natty; urgency=low
 
   * Pass CC to make to force gcc-4.4.

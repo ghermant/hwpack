@@ -1,3 +1,9 @@
+u-boot-linaro (2010.09~rc1.1-0ubuntu6) natty; urgency=low
+
+  * Pass CC to make to force gcc-4.4.
+
+ -- Loïc Minier <loic.minier@ubuntu.com>  Thu, 16 Dec 2010 01:40:01 +0100
+
 u-boot-linaro (2010.09~rc1.1-0ubuntu5) natty; urgency=low
 
   * Build with gcc-4.4 for now as 4.5 breaks u-boot for some reason.

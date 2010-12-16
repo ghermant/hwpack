@@ -10,11 +10,8 @@ DEB_HOST_GNU_TYPE  ?= $(shell dpkg-architecture -qDEB_HOST_GNU_TYPE)
 DEB_BUILD_GNU_TYPE ?= $(shell dpkg-architecture -qDEB_BUILD_GNU_TYPE)
 
 ifneq ($(DEB_BUILD_GNU_TYPE),$(DEB_HOST_GNU_TYPE))
-export CROSS_COMPILE=$(DEB_HOST_GNU_TYPE)-
+export CROSS_COMPILE?=$(DEB_HOST_GNU_TYPE)-
 endif
-
-# u-boot breaks with gcc-4.5
-CC = $(CROSS_COMPILE)gcc-4.4
 
 %:
 	dh $@
@@ -31,7 +28,7 @@ override_dh_auto_build:
 		mkdir -p debian/build/$$plat; \
 		$(MAKE) O=$$PWD/debian/build/$$plat $${plat}_config; \
 		find debian/build; \
-		$(MAKE) O=$$PWD/debian/build/$$plat CC="$(CC)"; \
+		$(MAKE) O=$$PWD/debian/build/$$plat; \
 	done <debian/platform-and-targets
 
 override_dh_auto_install:

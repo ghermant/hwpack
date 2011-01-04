@@ -1,8 +1,15 @@
-u-boot-linaro (2010.12-0ubuntu1) UNRELEASED; urgency=low
+u-boot-linaro (2010.12-0ubuntu1) natty; urgency=low
 
-  * Merge current upstream into packaged branch 
+  * Merge upstream v2010.12
+    - LP: 678398
+    - LP: 680095
+    - LP: 680372
+    - LP: 684585
+  * No longer force gcc-4.4
+    - LP: 691220
+  * Remove -Bsymbolic-functions from LDFLAGS in debian/rules
 
- -- John Rigby <john.rigby@linaro.org>  Wed, 15 Dec 2010 16:02:27 -0700
+ -- John Rigby <john.rigby@linaro.org>  Tue, 04 Jan 2011 09:01:45 -0700
 
 u-boot-linaro (2010.09~rc1.1-0ubuntu6) natty; urgency=low
 

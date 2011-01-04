@@ -6,6 +6,10 @@
 comma := ,
 LDFLAGS := $(patsubst -Wl$(comma)%,%,$(LDFLAGS))
 
+# remove -Bsymbolic-functions from LDFLAGS because is messes up ld and some
+# initializations end up being zero
+LDFLAGS := $(patsubst -Bsymbolic-functions,,$(LDFLAGS))
+
 DEB_HOST_GNU_TYPE  ?= $(shell dpkg-architecture -qDEB_HOST_GNU_TYPE)
 DEB_BUILD_GNU_TYPE ?= $(shell dpkg-architecture -qDEB_BUILD_GNU_TYPE)
 

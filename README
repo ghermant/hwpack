@@ -675,7 +675,7 @@ The following options need to be configured:
 					  (requires CONFIG_CMD_I2C)
 		CONFIG_CMD_SETGETDCR	  Support for DCR Register access
 					  (4xx only)
-		CONFIG_CMD_SHA1		  print sha1 memory digest
+		CONFIG_CMD_SHA1SUM	  print sha1 memory digest
 					  (requires CONFIG_CMD_MEMORY)
 		CONFIG_CMD_SOURCE	  "source" command Support
 		CONFIG_CMD_SPI		* SPI serial bus support
@@ -745,6 +745,10 @@ The following options need to be configured:
 - GPIO Support:
 		CONFIG_PCA953X		- use NXP's PCA953X series I2C GPIO
 		CONFIG_PCA953X_INFO	- enable pca953x info command
+
+		The CONFIG_SYS_I2C_PCA953X_WIDTH option specifies a list of
+		chip-ngpio pairs that tell the PCA953X driver the number of
+		pins supported by a particular chip.
 
 		Note that if the GPIO device uses I2C, then the I2C interface
 		must also be configured. See I2C Support, below.
@@ -860,6 +864,18 @@ The following options need to be configured:
 			CONFIG_SMC_USE_IOFUNCS
 			Define this to use i/o functions instead of macros
 			(some hardware wont work with macros)
+
+		CONFIG_FTGMAC100
+		Support for Faraday's FTGMAC100 Gigabit SoC Ethernet
+
+			CONFIG_FTGMAC100_EGIGA
+			Define this to use GE link update with gigabit PHY.
+			Define this if FTGMAC100 is connected to gigabit PHY.
+			If your system has 10/100 PHY only, it might not occur
+			wrong behavior. Because PHY usually return timeout or
+			useless data when polling gigabit status and gigabit
+			control registers. This behavior won't affect the
+			correctnessof 10/100 link speed update.
 
 		CONFIG_SMC911X
 		Support for SMSC's LAN911x and LAN921x chips
@@ -2770,6 +2786,24 @@ Low Level (hardware related) configuration options:
 - CONFIG_PCI_DISABLE_PCIE:
 		Disable PCI-Express on systems where it is supported but not
 		required.
+
+- CONFIG_SYS_SRIO:
+		Chip has SRIO or not
+
+- CONFIG_SRIO1:
+		Board has SRIO 1 port available
+
+- CONFIG_SRIO2:
+		Board has SRIO 2 port available
+
+- CONFIG_SYS_SRIOn_MEM_VIRT:
+		Virtual Address of SRIO port 'n' memory region
+
+- CONFIG_SYS_SRIOn_MEM_PHYS:
+		Physical Address of SRIO port 'n' memory region
+
+- CONFIG_SYS_SRIOn_MEM_SIZE:
+		Size of SRIO port 'n' memory region
 
 - CONFIG_SPD_EEPROM
 		Get DDR timing information from an I2C EEPROM. Common

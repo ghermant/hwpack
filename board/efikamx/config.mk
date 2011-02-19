@@ -21,5 +21,5 @@
 #
 
 CONFIG_SYS_TEXT_BASE = 0x97800000
-IMX_CONFIG = $(SRCTREE)/board/$(BOARDDIR)/imximage.cfg
+IMX_CONFIG = $(SRCTREE)/board/$(BOARDDIR)/imximage_$(CONFIG_IMX_IMAGE_TYPE).cfg
 ALL += $(obj)u-boot.imx

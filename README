@@ -319,6 +319,11 @@ The following options need to be configured:
 			CONFIG_SYS_PQ2FADS	- PQ2FADS-ZU or PQ2FADS-VR
 			CONFIG_SYS_8272ADS	- MPC8272ADS
 
+- Marvell Family Member
+		CONFIG_SYS_MVFS		- define it if you want to enable
+					  multiple fs option at one time
+					  for marvell soc family
+
 - MPC824X Family Member (if CONFIG_MPC824X is defined)
 		Define exactly one of
 		CONFIG_MPC8240, CONFIG_MPC8245
@@ -891,6 +896,18 @@ The following options need to be configured:
 			Define this if data bus is 16 bits. If your processor
 			automatically converts one 32 bit word to two 16 bit
 			words you may also try CONFIG_SMC911X_32_BIT.
+
+		CONFIG_SH_ETHER
+		Support for Renesas on-chip Ethernet controller
+
+			CONFIG_SH_ETHER_USE_PORT
+			Define the number of ports to be used
+
+			CONFIG_SH_ETHER_PHY_ADDR
+			Define the ETH PHY's address
+
+			CONFIG_SH_ETHER_CACHE_WRITEBACK
+			If this option is set, the driver enables cache flush.
 
 - USB Support:
 		At the moment only the UHCI host controller is
@@ -1647,6 +1664,11 @@ The following options need to be configured:
 		Enables SPI driver (so far only tested with
 		SPI EEPROM, also an instance works with Crystal A/D and
 		D/As on the SACSng board)
+
+		CONFIG_SH_SPI
+
+		Enables the driver for SPI controller on SuperH. Currently
+		only SH7757 is supported.
 
 		CONFIG_SPI_X
 

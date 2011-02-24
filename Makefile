@@ -235,6 +235,7 @@ endif
 LIBS += drivers/rtc/librtc.o
 LIBS += drivers/serial/libserial.o
 LIBS += drivers/twserial/libtws.o
+LIBS += drivers/usb/eth/libusb_eth.a
 LIBS += drivers/usb/gadget/libusb_gadget.o
 LIBS += drivers/usb/host/libusb_host.o
 LIBS += drivers/usb/musb/libusb_musb.o
@@ -1090,95 +1091,6 @@ smdk6400_config	:	unconfig
 	fi
 	@$(MKCONFIG) smdk6400 arm arm1176 smdk6400 samsung s3c64xx
 	@echo "CONFIG_NAND_U_BOOT = y" >> $(obj)include/config.mk
-
-#========================================================================
-# MIPS
-#========================================================================
-#########################################################################
-## MIPS32 4Kc
-#########################################################################
-
-incaip_100MHz_config	\
-incaip_133MHz_config	\
-incaip_150MHz_config	\
-incaip_config: unconfig
-	@mkdir -p $(obj)include
-	@[ -z "$(findstring _100MHz,$@)" ] || \
-		echo "#define CPU_CLOCK_RATE 100000000" >>$(obj)include/config.h
-	@[ -z "$(findstring _133MHz,$@)" ] || \
-		echo "#define CPU_CLOCK_RATE 133000000" >>$(obj)include/config.h
-	@[ -z "$(findstring _150MHz,$@)" ] || \
-		echo "#define CPU_CLOCK_RATE 150000000" >>$(obj)include/config.h
-	@$(MKCONFIG) -n $@ -a incaip mips mips incaip
-
-vct_premium_config		\
-vct_premium_small_config	\
-vct_premium_onenand_config	\
-vct_premium_onenand_small_config \
-vct_platinum_config		\
-vct_platinum_small_config	\
-vct_platinum_onenand_config	\
-vct_platinum_onenand_small_config \
-vct_platinumavc_config		\
-vct_platinumavc_small_config	\
-vct_platinumavc_onenand_config	\
-vct_platinumavc_onenand_small_config: unconfig
-	@mkdir -p $(obj)include
-	@[ -z "$(findstring _premium,$@)" ] || \
-		echo "#define CONFIG_VCT_PREMIUM" > $(obj)include/config.h
-	@[ -z "$(findstring _platinum_,$@)" ] || \
-		echo "#define CONFIG_VCT_PLATINUM" > $(obj)include/config.h
-	@[ -z "$(findstring _platinumavc,$@)" ] || \
-		echo "#define CONFIG_VCT_PLATINUMAVC" > $(obj)include/config.h
-	@[ -z "$(findstring _onenand,$@)" ] || \
-		echo "#define CONFIG_VCT_ONENAND" >> $(obj)include/config.h
-	@[ -z "$(findstring _small,$@)" ] || \
-		echo "#define CONFIG_VCT_SMALL_IMAGE" >> $(obj)include/config.h
-	@$(MKCONFIG)  -n $@ -a vct mips mips vct micronas
-
-#########################################################################
-## MIPS32 AU1X00
-#########################################################################
-
-dbau1000_config		:	unconfig
-	@mkdir -p $(obj)include
-	@echo "#define CONFIG_DBAU1000 1" >$(obj)include/config.h
-	@$(MKCONFIG) -a dbau1x00 mips mips dbau1x00
-
-dbau1100_config		:	unconfig
-	@mkdir -p $(obj)include
-	@echo "#define CONFIG_DBAU1100 1" >$(obj)include/config.h
-	@$(MKCONFIG) -a dbau1x00 mips mips dbau1x00
-
-dbau1500_config		:	unconfig
-	@mkdir -p $(obj)include
-	@echo "#define CONFIG_DBAU1500 1" >$(obj)include/config.h
-	@$(MKCONFIG) -a dbau1x00 mips mips dbau1x00
-
-dbau1550_config		:	unconfig
-	@mkdir -p $(obj)include
-	@echo "#define CONFIG_DBAU1550 1" >$(obj)include/config.h
-	@$(MKCONFIG) -a dbau1x00 mips mips dbau1x00
-
-dbau1550_el_config	:	unconfig
-	@mkdir -p $(obj)include
-	@echo "#define CONFIG_DBAU1550 1" >$(obj)include/config.h
-	@$(MKCONFIG) -a dbau1x00 mips mips dbau1x00
-
-gth2_config		:	unconfig
-	@mkdir -p $(obj)include
-	@echo "#define CONFIG_GTH2 1" >$(obj)include/config.h
-	@$(MKCONFIG) -a $@ mips mips gth2
-
-pb1000_config		:	unconfig
-	@mkdir -p $(obj)include
-	@echo "#define CONFIG_PB1000 1" >$(obj)include/config.h
-	@$(MKCONFIG) -a pb1x00 mips mips pb1x00
-
-qemu_mips_config	: unconfig
-	@mkdir -p $(obj)include
-	@echo "#define CONFIG_QEMU_MIPS 1" >$(obj)include/config.h
-	@$(MKCONFIG) -a qemu-mips mips mips qemu-mips
 
 #========================================================================
 # Nios

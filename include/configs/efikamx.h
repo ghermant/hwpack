@@ -182,8 +182,38 @@
  * Miscellaneous configurable options
  */
 #define CONFIG_ENV_OVERWRITE
-#define CONFIG_BOOTDELAY		3
+#define CONFIG_BOOTDELAY		1
 #define CONFIG_LOADADDR			0x90800000
+
+#define CONFIG_EXTRA_ENV_SETTINGS \
+	"script=boot.scr\0" \
+	"uimage=uImage\0" \
+	"mmcdev=1\0" \
+	"mmcpart=2\0" \
+	"mmcroot=/dev/mmcblk0p3 rw\0" \
+	"mmcrootfstype=ext3 rootwait\0" \
+	"mmcargs=setenv bootargs console=ttymxc0,${baudrate} " \
+		"root=${mmcroot} " \
+		"rootfstype=${mmcrootfstype}\0" \
+	"loadbootscript=" \
+		"fatload mmc ${mmcdev}:${mmcpart} ${loadaddr} ${script};\0" \
+	"bootscript=echo Running bootscript from mmc ...; " \
+		"source\0" \
+	"loaduimage=fatload mmc ${mmcdev}:${mmcpart} ${loadaddr} ${uimage}\0" \
+	"mmcboot=echo Booting from mmc ...; " \
+		"run mmcargs; " \
+		"bootm\0" \
+
+#define CONFIG_BOOTCOMMAND \
+	"if mmc rescan ${mmcdev}; then " \
+		"if run loadbootscript; then " \
+			"run bootscript; " \
+		"else " \
+			"if run loaduimage; then " \
+				"run mmcboot; " \
+			"fi; " \
+		"fi; " \
+	"fi"
 
 #define CONFIG_SYS_LONGHELP		/* undef to save memory */
 #define CONFIG_SYS_HUSH_PARSER		/* use "hush" command parser */

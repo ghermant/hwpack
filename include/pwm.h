@@ -1,9 +1,8 @@
 /*
- * (C) Copyright 2008
- * Graeme Russ, graeme.russ@gmail.com.
+ * header file for pwm driver.
  *
- * See file CREDITS for list of people who contributed to this
- * project.
+ * Copyright (c) 2011 samsung electronics
+ * Donghwa Lee <dh09.lee@samsung.com>
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as
@@ -12,7 +11,7 @@
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.	 See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
@@ -21,10 +20,12 @@
  * MA 02111-1307 USA
  */
 
-#include "hardware.h"
+#ifndef _pwm_h_
+#define _pwm_h_
 
-/* board early intialization */
-.globl early_board_init
-early_board_init:
-	/* No 32-bit board specific initialisation */
-	jmp	early_board_init_ret
+int	pwm_init		(int pwm_id, int div, int invert);
+int	pwm_config		(int pwm_id, int duty_ns, int period_ns);
+int	pwm_enable		(int pwm_id);
+void	pwm_disable		(int pwm_id);
+
+#endif /* _pwm_h_ */

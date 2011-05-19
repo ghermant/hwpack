@@ -873,6 +873,7 @@ int smsc95xx_eth_get_info(struct usb_device *dev, struct ueth_data *ss,
 	eth->send = smsc95xx_send;
 	eth->recv = smsc95xx_recv;
 	eth->halt = smsc95xx_halt;
+	eth->write_hwaddr = smsc95xx_write_hwaddr;
 	eth->priv = ss;
 	return 1;
 }

@@ -16,6 +16,8 @@
  */
 
 #include <common.h>
+#include <ahci.h>
+#include <scsi.h>
 
 #include <asm/sizes.h>
 
@@ -28,6 +30,13 @@ int board_init(void)
 {
 	icache_enable();
 
+	return 0;
+}
+
+int misc_init_r(void)
+{
+	ahci_init(0xffe08000);
+	scsi_scan(1);
 	return 0;
 }
 

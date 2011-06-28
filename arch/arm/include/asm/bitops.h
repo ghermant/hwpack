@@ -106,6 +106,15 @@ static inline int test_bit(int nr, const void * addr)
     return ((unsigned char *) addr)[nr >> 3] & (1U << (nr & 7));
 }
 
+extern __inline__ int __ilog2(unsigned int x)
+{
+	int ret;
+
+	asm("clz\t%0, %1" : "=r" (ret) : "r" (x));
+	ret = 31 - ret;
+	return ret;
+}
+
 /*
  * ffz = Find First Zero in word. Undefined if no zero exists,
  * so code should check against ~0UL first..

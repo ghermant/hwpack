@@ -265,6 +265,9 @@ extern ulong load_addr;		/* Default Load Address */
 /* common/cmd_doc.c */
 void	doc_probe(unsigned long physadr);
 
+/* common/cmd_net.c */
+int do_tftpb(cmd_tbl_t *cmdtp, int flag, int argc, char * const argv[]);
+
 /* common/cmd_nvedit.c */
 int	env_init     (void);
 void	env_relocate (void);

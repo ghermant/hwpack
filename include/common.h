@@ -660,6 +660,9 @@ int strcmp_compar(const void *, const void *);
 /* lib/time.c */
 void	udelay        (unsigned long);
 
+/* lib/uuid.c */
+void uuid_str_to_bin(const char *uuid, unsigned char *out);
+
 /* lib/vsprintf.c */
 ulong	simple_strtoul(const char *cp,char **endp,unsigned int base);
 int strict_strtoul(const char *cp, unsigned int base, unsigned long *res);

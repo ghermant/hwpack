@@ -73,6 +73,8 @@
 /* Command line configuration */
 #define CONFIG_CMD_BDI
 #define CONFIG_CMD_DHCP
+#define CONFIG_CMD_PXECFG
+#define CONFIG_MENU
 #define CONFIG_CMD_ELF
 #define CONFIG_CMD_ENV
 #define CONFIG_CMD_FLASH
@@ -136,6 +138,9 @@
 		"kerneladdr=0x44100000\0" \
 		"initrdaddr=0x44800000\0" \
 		"maxinitrd=0x1800000\0" \
+		"pxecfg_ram=0x88000000\0" \
+		"initrd_ram=0x61000000\0" \
+		"kernel_ram=0x80008000\0" \
 		"console=ttyAMA0,38400n8\0" \
 		"dram=1024M\0" \
 		"root=/dev/sda1 rw\0" \

@@ -360,6 +360,11 @@ static int DhcpExtended (u8 * e, int message_type, IPaddr_t ServerID, IPaddr_t R
 {
 	u8 *start = e;
 	u8 *cnt;
+#if defined(CONFIG_BOOTP_PXE)
+	char *uuid;
+	size_t vci_strlen;
+	u16 clientarch;
+#endif
 
 #if defined(CONFIG_BOOTP_VENDOREX)
 	u8 *x;
@@ -412,6 +417,37 @@ static int DhcpExtended (u8 * e, int message_type, IPaddr_t ServerID, IPaddr_t R
 		memcpy (e, hostname, hostnamelen);
 		e += hostnamelen;
 	}
+#endif
+
+#if defined(CONFIG_BOOTP_PXE)
+	clientarch = CONFIG_BOOTP_PXE_CLIENTARCH;
+	*e++ = 93;	/* Client System Architecture */
+	*e++ = 2;
+	*e++ = (clientarch >> 8) & 0xff;
+	*e++ = clientarch & 0xff;
+
+	*e++ = 94;	/* Client Network Interface Identifier */
+	*e++ = 3;
+	*e++ = 1;	/* type field for UNDI */
+	*e++ = 0;	/* major revision */
+	*e++ = 0;	/* minor revision */
+
+	uuid = getenv("pxeuuid");
+
+	if (uuid) {
+		*e++ = 97;	/* Client Machine Identifier */
+		*e++ = 17;
+		*e++ = 0;	/* type 0 - UUID */
+
+		uuid_str_to_bin(uuid, e);
+		e += 16;
+	}
+
+	*e++ = 60;	/* Vendor Class Identifier */
+	vci_strlen = strlen(CONFIG_BOOTP_VCI_STRING);
+	*e++ = vci_strlen;
+	memcpy(e, CONFIG_BOOTP_VCI_STRING, vci_strlen);
+	e += vci_strlen;
 #endif
 
 #if defined(CONFIG_BOOTP_VENDOREX)

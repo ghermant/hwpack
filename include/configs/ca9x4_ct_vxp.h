@@ -99,6 +99,11 @@
 #define CONFIG_BOOTP_GATEWAY
 #define CONFIG_BOOTP_HOSTNAME
 
+/* PXE support */
+#define CONFIG_BOOTP_PXE
+#define CONFIG_BOOTP_PXE_CLIENTARCH	0x100
+#define CONFIG_BOOTP_VCI_STRING		"U-boot.armv7.ca9x4_ct_vxp"
+
 /* Miscellaneous configurable options */
 #undef	CONFIG_SYS_CLKS_IN_HZ
 #define CONFIG_SYS_LOAD_ADDR		0x60008000	/* load address */

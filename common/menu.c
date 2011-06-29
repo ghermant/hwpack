@@ -30,6 +30,7 @@ struct menu_item {
 
 struct menu {
 	struct menu_item *default_item;
+	int timeout;
 	char *title;
 	int prompt;
 	void (*item_data_print)(void *);
@@ -113,9 +114,20 @@ static inline struct menu_item *menu_item_by_key(struct menu *m,
 	return menu_items_iter(m, menu_item_key_match, item_key);
 }
 
+static inline int menu_interrupted(struct menu *m)
+{
+	if (!m->timeout)
+		return 0;
+
+	if (abortboot(m->timeout/10))
+		return 1;
+
+	return 0;
+}
+
 static inline int menu_use_default(struct menu *m)
 {
-	return !m->prompt;
+	return !m->prompt && !menu_interrupted(m);
 }
 
 static inline int menu_default_choice(struct menu *m, void **choice)
@@ -221,7 +233,7 @@ int menu_item_add(struct menu *m, char *item_key, void *item_data)
 	return 1;
 }
 
-struct menu *menu_create(char *title, int prompt,
+struct menu *menu_create(char *title, int timeout, int prompt,
 				void (*item_data_print)(void *))
 {
 	struct menu *m;
@@ -233,6 +245,7 @@ struct menu *menu_create(char *title, int prompt,
 
 	m->default_item = NULL;
 	m->prompt = prompt;
+	m->timeout = timeout;
 	m->item_data_print = item_data_print;
 
 	if (title) {

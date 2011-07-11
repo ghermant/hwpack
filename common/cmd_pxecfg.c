@@ -430,7 +430,10 @@ static void label_boot(struct pxecfg_label *label)
 	 */
 	bootm_argv[3] = getenv("fdtaddr");
 
-	do_bootm(NULL, 0, 4, bootm_argv);
+	if (bootm_argv[3])
+		do_bootm(NULL, 0, 4, bootm_argv);
+	else
+		do_bootm(NULL, 0, 3, bootm_argv);
 }
 
 enum token_type {

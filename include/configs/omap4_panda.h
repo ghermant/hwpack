@@ -175,6 +175,8 @@
 #define CONFIG_EXTRA_ENV_SETTINGS \
 	"loadaddr=0x82000000\0" \
 	"pxecfg_ram=0x88000000\0" \
+	"kernel_ram=0x80200000\0" \
+	"initrd_ram=0x81600000\0" \
 	"console=ttyS2,115200n8\0" \
 	"usbtty=cdc_acm\0" \
 	"vram=16M\0" \

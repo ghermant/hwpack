@@ -178,7 +178,6 @@
 	"console=ttyS2,115200n8\0" \
 	"usbtty=cdc_acm\0" \
 	"vram=16M\0" \
-	"usbethaddr=00:02:03:04:05:06\0" \
 	"hostname=panda\0" \
 	"mmcdev=0\0" \
 	"mmcroot=/dev/mmcblk0p2 rw\0" \

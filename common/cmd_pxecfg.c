@@ -50,6 +50,9 @@ static void format_mac_pxecfg(char **outbuf)
 	ethaddr = from_env("ethaddr");
 
 	if (!ethaddr)
+		ethaddr = from_env("usbethaddr");
+
+	if (!ethaddr)
 		return;
 
 	*outbuf = strdup(ethaddr);

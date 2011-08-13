@@ -57,7 +57,7 @@ const struct pad_conf_entry core_padconf_array_non_essential[] = {
 	{GPMC_NBE0_CLE, (M3)},						/* gpio_59 */
 	{GPMC_NBE1, (PTD | M3)},					/* gpio_60 */
 	{GPMC_WAIT0, (PTU | IEN | M3)},					/* gpio_61 */
-	{GPMC_WAIT1, (IEN | M3)},					/* gpio_62 */
+	{GPMC_WAIT1, (PTD | M3)},					/* gpio_62 */
 	{C2C_DATA11, (PTD | M3)},					/* gpio_100 */
 	{C2C_DATA12, (M1)},						/* dsi1_te0 */
 	{C2C_DATA13, (PTD | M3)},					/* gpio_102 */
@@ -84,14 +84,14 @@ const struct pad_conf_entry core_padconf_array_non_essential[] = {
 	{CAM_SHUTTER, (OFF_EN | OFF_PD | OFF_OUT_PTD | M0)},		/* cam_shutter */
 	{CAM_STROBE, (OFF_EN | OFF_PD | OFF_OUT_PTD | M0)},		/* cam_strobe */
 	{CAM_GLOBALRESET, (PTD | OFF_EN | OFF_PD | OFF_OUT_PTD | M3)},	/* gpio_83 */
-	{USBB1_ULPITLL_CLK, (IEN | OFF_EN | OFF_IN | M1)},		/* hsi1_cawake */
-	{USBB1_ULPITLL_STP, (IEN | OFF_EN | OFF_IN | M1)},		/* hsi1_cadata */
-	{USBB1_ULPITLL_DIR, (IEN | OFF_EN | OFF_IN | M1)},		/* hsi1_caflag */
-	{USBB1_ULPITLL_NXT, (OFF_EN | M1)},				/* hsi1_acready */
-	{USBB1_ULPITLL_DAT0, (OFF_EN | M1)},				/* hsi1_acwake */
-	{USBB1_ULPITLL_DAT1, (OFF_EN | M1)},				/* hsi1_acdata */
-	{USBB1_ULPITLL_DAT2, (OFF_EN | M1)},				/* hsi1_acflag */
-	{USBB1_ULPITLL_DAT3, (IEN | OFF_EN | OFF_IN | M1)},		/* hsi1_caready */
+	{USBB1_ULPITLL_CLK, (PTD | IEN | OFF_EN | OFF_PD | OFF_IN | M4)},/* usbb1_ulpiphy_clk */
+	{USBB1_ULPITLL_STP, (OFF_EN | OFF_OUT_PTD | M4)},		/* usbb1_ulpiphy_stp */
+	{USBB1_ULPITLL_DIR, (IEN | OFF_EN | OFF_PD | OFF_IN | M4)},	/* usbb1_ulpiphy_dir */
+	{USBB1_ULPITLL_NXT, (IEN | OFF_EN | OFF_PD | OFF_IN | M4)},	/* usbb1_ulpiphy_nxt */
+	{USBB1_ULPITLL_DAT0, (IEN | OFF_EN | OFF_PD | OFF_IN | M4)},	/* usbb1_ulpiphy_dat0 */
+	{USBB1_ULPITLL_DAT1, (IEN | OFF_EN | OFF_PD | OFF_IN | M4)},	/* usbb1_ulpiphy_dat1 */
+	{USBB1_ULPITLL_DAT2, (IEN | OFF_EN | OFF_PD | OFF_IN | M4)},	/* usbb1_ulpiphy_dat2 */
+	{USBB1_ULPITLL_DAT3, (IEN | OFF_EN | OFF_PD | OFF_IN | M4)},	/* usbb1_ulpiphy_dat3 */
 	{USBB1_ULPITLL_DAT4, (IEN | OFF_EN | OFF_PD | OFF_IN | M4)},	/* usbb1_ulpiphy_dat4 */
 	{USBB1_ULPITLL_DAT5, (IEN | OFF_EN | OFF_PD | OFF_IN | M4)},	/* usbb1_ulpiphy_dat5 */
 	{USBB1_ULPITLL_DAT6, (IEN | OFF_EN | OFF_PD | OFF_IN | M4)},	/* usbb1_ulpiphy_dat6 */
@@ -160,7 +160,7 @@ const struct pad_conf_entry core_padconf_array_non_essential[] = {
 	{UNIPRO_TX1, (OFF_EN | OFF_PD | OFF_IN | M1)},			/* kpd_col2 */
 	{UNIPRO_TY1, (OFF_EN | OFF_PD | OFF_IN | M1)},			/* kpd_col3 */
 	{UNIPRO_TX2, (OFF_EN | OFF_PD | OFF_IN | M1)},			/* kpd_col4 */
-	{UNIPRO_TY2, (OFF_EN | OFF_PD | OFF_IN | M1)},			/* kpd_col5 */
+	{UNIPRO_TY2, (PTU | IEN | M3)},					/* gpio_1 */
 	{UNIPRO_RX0, (PTU | IEN | OFF_EN | OFF_PD | OFF_IN | M1)},	/* kpd_row0 */
 	{UNIPRO_RY0, (PTU | IEN | OFF_EN | OFF_PD | OFF_IN | M1)},	/* kpd_row1 */
 	{UNIPRO_RX1, (PTU | IEN | OFF_EN | OFF_PD | OFF_IN | M1)},	/* kpd_row2 */

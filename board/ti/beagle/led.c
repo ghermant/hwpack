@@ -22,7 +22,7 @@
 #include <asm/arch/cpu.h>
 #include <asm/io.h>
 #include <asm/arch/sys_proto.h>
-#include <asm/arch/gpio.h>
+#include <asm/omap_gpio.h>
 
 static unsigned int saved_state[2] = {STATUS_LED_OFF, STATUS_LED_OFF};
 

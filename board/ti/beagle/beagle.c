@@ -38,8 +38,8 @@
 #include <asm/arch/mmc_host_def.h>
 #include <asm/arch/mux.h>
 #include <asm/arch/sys_proto.h>
-#include <asm/arch/gpio.h>
 #include <asm/mach-types.h>
+#include <asm/omap_gpio.h>
 #ifdef CONFIG_USB_EHCI
 #include <usb.h>
 #include <asm/arch/clocks.h>

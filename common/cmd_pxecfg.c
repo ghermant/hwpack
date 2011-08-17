@@ -55,12 +55,17 @@ static void format_mac_pxecfg(char **outbuf)
 	if (!ethaddr)
 		return;
 
-	*outbuf = strdup(ethaddr);
+	/* "01-" MAC type prefix, dash-separated MAC address, zero */
+	*outbuf = malloc(3 + strlen(ethaddr) + 1);
 
 	if (*outbuf == NULL)
 		return;
 
-	for (p = *outbuf; *p; p++) {
+	/* MAC type 1; ideally should be read from the DHCP/BOOTP reply packet,
+	 * but in practice always 1 for Ethernet */
+	sprintf(*outbuf, "01-%s", ethaddr);
+
+	for (p = *outbuf + 3; *p; p++) {
 		if (*p == ':')
 			*p = '-';
 	}

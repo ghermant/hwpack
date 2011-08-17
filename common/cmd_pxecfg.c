@@ -65,9 +65,12 @@ static void format_mac_pxecfg(char **outbuf)
 	 * but in practice always 1 for Ethernet */
 	sprintf(*outbuf, "01-%s", ethaddr);
 
+	/* convert colons to dashes and lower case the MAC address */
 	for (p = *outbuf + 3; *p; p++) {
 		if (*p == ':')
 			*p = '-';
+		else
+			*p = tolower(*p);
 	}
 }
 

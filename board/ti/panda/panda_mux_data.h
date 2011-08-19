@@ -43,7 +43,7 @@ const struct pad_conf_entry core_padconf_array_non_essential[] = {
 	{GPMC_A19, (PTU | IEN | OFF_EN | OFF_PD | OFF_IN | M1)},	/* kpd_row7 */
 	{GPMC_A20, (IEN | M3)},						/* gpio_44 */
 	{GPMC_A21, (M3)},						/* gpio_45 */
-	{GPMC_A22, (OFF_EN | OFF_PD | OFF_IN | M1)},			/* kpd_col6 */
+	{GPMC_A22, (M3)},						/* gpio_46 */
 	{GPMC_A23, (OFF_EN | OFF_PD | OFF_IN | M1)},			/* kpd_col7 */
 	{GPMC_A24, (PTD | M3)},						/* gpio_48 */
 	{GPMC_A25, (PTD | M3)},						/* gpio_49 */
@@ -57,9 +57,9 @@ const struct pad_conf_entry core_padconf_array_non_essential[] = {
 	{GPMC_NBE0_CLE, (M3)},						/* gpio_59 */
 	{GPMC_NBE1, (PTD | M3)},					/* gpio_60 */
 	{GPMC_WAIT0, (PTU | IEN | M3)},					/* gpio_61 */
-	{GPMC_WAIT1, (PTD | M3)},					/* gpio_62 */
+	{GPMC_WAIT1, (PTD | OFF_EN | OFF_PD | OFF_OUT_PTD | M3)},	/* gpio_62 */
 	{C2C_DATA11, (PTD | M3)},					/* gpio_100 */
-	{C2C_DATA12, (M1)},						/* dsi1_te0 */
+	{C2C_DATA12, (PTU | IEN | M3)},					/* gpio_101 */
 	{C2C_DATA13, (PTD | M3)},					/* gpio_102 */
 	{C2C_DATA14, (M1)},						/* dsi2_te0 */
 	{C2C_DATA15, (PTD | M3)},					/* gpio_104 */
@@ -155,11 +155,11 @@ const struct pad_conf_entry core_padconf_array_non_essential[] = {
 	{USBB2_ULPITLL_DAT7, (IEN | M5)},				/* dispc2_data11 */
 	{USBB2_HSIC_DATA, (PTD | OFF_EN | OFF_OUT_PTU | M3)},		/* gpio_169 */
 	{USBB2_HSIC_STROBE, (PTD | OFF_EN | OFF_OUT_PTU | M3)},		/* gpio_170 */
-	{UNIPRO_TX0, (OFF_EN | OFF_PD | OFF_IN | M1)},			/* kpd_col0 */
+	{UNIPRO_TX0, (PTD | IEN | M3)},					/* gpio_171 */
 	{UNIPRO_TY0, (OFF_EN | OFF_PD | OFF_IN | M1)},			/* kpd_col1 */
 	{UNIPRO_TX1, (OFF_EN | OFF_PD | OFF_IN | M1)},			/* kpd_col2 */
 	{UNIPRO_TY1, (OFF_EN | OFF_PD | OFF_IN | M1)},			/* kpd_col3 */
-	{UNIPRO_TX2, (OFF_EN | OFF_PD | OFF_IN | M1)},			/* kpd_col4 */
+	{UNIPRO_TX2, (PTU | IEN | M3)},					/* gpio_0 */
 	{UNIPRO_TY2, (PTU | IEN | M3)},					/* gpio_1 */
 	{UNIPRO_RX0, (PTU | IEN | OFF_EN | OFF_PD | OFF_IN | M1)},	/* kpd_row0 */
 	{UNIPRO_RY0, (PTU | IEN | OFF_EN | OFF_PD | OFF_IN | M1)},	/* kpd_row1 */
@@ -171,7 +171,7 @@ const struct pad_conf_entry core_padconf_array_non_essential[] = {
 	{USBA0_OTG_DP, (IEN | OFF_EN | OFF_PD | OFF_IN | M0)},		/* usba0_otg_dp */
 	{USBA0_OTG_DM, (IEN | OFF_EN | OFF_PD | OFF_IN | M0)},		/* usba0_otg_dm */
 	{FREF_CLK1_OUT, (M0)},						/* fref_clk1_out */
-	{FREF_CLK2_OUT, (M0)},						/* fref_clk2_out */
+	{FREF_CLK2_OUT, (PTU | IEN | M3)},				/* gpio_182 */
 	{SYS_NIRQ1, (PTU | IEN | M0)},					/* sys_nirq1 */
 	{SYS_NIRQ2, (M7)},						/* sys_nirq2 */
 	{SYS_BOOT0, (PTU | IEN | M3)},					/* gpio_184 */
@@ -203,28 +203,26 @@ const struct pad_conf_entry core_padconf_array_non_essential[] = {
 };
 
 const struct pad_conf_entry wkup_padconf_array_non_essential[] = {
-	{PAD0_SIM_IO, (IEN | M0)},		/* sim_io */
-	{PAD1_SIM_CLK, (M0)},			/* sim_clk */
-	{PAD0_SIM_RESET, (M0)},			/* sim_reset */
-	{PAD1_SIM_CD, (PTU | IEN | M0)},	/* sim_cd */
-	{PAD0_SIM_PWRCTRL, (M0)},		/* sim_pwrctrl */
-	{PAD1_FREF_XTAL_IN, (M0)},		/* # */
-	{PAD0_FREF_SLICER_IN, (M0)},		/* fref_slicer_in */
-	{PAD1_FREF_CLK_IOREQ, (M0)},		/* fref_clk_ioreq */
-	{PAD0_FREF_CLK0_OUT, (M2)},		/* sys_drm_msecure */
-	{PAD1_FREF_CLK3_REQ, (PTU | IEN | M0)},	/* # */
-	{PAD0_FREF_CLK3_OUT, (M0)},		/* fref_clk3_out */
-	{PAD1_FREF_CLK4_REQ, (PTU | IEN | M0)},	/* # */
-	{PAD0_FREF_CLK4_OUT, (M0)},		/* # */
-	{PAD0_SYS_NRESPWRON, (M0)},		/* sys_nrespwron */
-	{PAD1_SYS_NRESWARM, (M0)},		/* sys_nreswarm */
-	{PAD0_SYS_PWR_REQ, (PTU | M0)},		/* sys_pwr_req */
-	{PAD1_SYS_PWRON_RESET, (M3)},		/* gpio_wk29 */
-	{PAD0_SYS_BOOT6, (IEN | M3)},		/* gpio_wk9 */
-	{PAD1_SYS_BOOT7, (IEN | M3)},		/* gpio_wk10 */
-	{PAD1_FREF_CLK3_REQ, (M3)},		/* gpio_wk30 */
-	{PAD1_FREF_CLK4_REQ, (M3)},		/* gpio_wk7 */
-	{PAD0_FREF_CLK4_OUT, (M3)},		/* gpio_wk8 */
+	{PAD0_SIM_IO, (IEN | M0)},					/* sim_io */
+	{PAD1_SIM_CLK, (M0)},						/* sim_clk */
+	{PAD0_SIM_RESET, (M0)},						/* sim_reset */
+	{PAD1_SIM_CD, (PTU | IEN | M0)},				/* sim_cd */
+	{PAD0_SIM_PWRCTRL, (M0)},					/* sim_pwrctrl */
+	{PAD1_FREF_XTAL_IN, (M0)},					/* # */
+	{PAD0_FREF_SLICER_IN, (M0)},					/* fref_slicer_in */
+	{PAD1_FREF_CLK_IOREQ, (M0)},					/* fref_clk_ioreq */
+	{PAD0_FREF_CLK0_OUT, (M2)},					/* sys_drm_msecure */
+	{PAD1_FREF_CLK3_REQ, (M3)},					/* gpio_wk30 */
+	{PAD0_FREF_CLK3_OUT, (M0)},					/* fref_clk3_out */
+	{PAD1_FREF_CLK4_REQ, (PTU | OFF_EN | OFF_OUT_PTU | M3)},	/* led status_1 */
+	{PAD0_FREF_CLK4_OUT, (PTU | OFF_EN | OFF_OUT_PTU | M3)},	/* led status_2 */
+	{PAD0_SYS_NRESPWRON, (M0)},					/* sys_nrespwron */
+	{PAD1_SYS_NRESWARM, (M0)},					/* sys_nreswarm */
+	{PAD0_SYS_PWR_REQ, (PTU | M0)},					/* sys_pwr_req */
+	{PAD1_SYS_PWRON_RESET, (M3)},					/* gpio_wk29 */
+	{PAD0_SYS_BOOT6, (IEN | M3)},					/* gpio_wk9 */
+	{PAD1_SYS_BOOT7, (IEN | M3)},					/* gpio_wk10 */
+	{PAD1_FREF_CLK3_REQ, (M3)},					/* gpio_wk30 */
 };
 
 #endif /* _SDP4430_MUX_DATA_H */
